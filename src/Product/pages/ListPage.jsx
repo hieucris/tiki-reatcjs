@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import productApi from 'api/productApi';
 import { useState } from 'react';
 import ProductSkeletonList from 'Product/components/ProductSkeletonList';
+import ProductList from 'Product/components/ProductList';
 
 ListPage.propTypes = {};
 
@@ -14,7 +15,7 @@ const useStyle = makeStyles((theme) => ({
     width: '250px',
   },
   right: {
-    flex: '1 1 auto',
+    flex: '1 1 0',
   },
 }));
 
@@ -32,7 +33,7 @@ function ListPage(props) {
       } catch (error) {
         console.log('faild fetch Api Products');
       }
-      // setLoading(false);
+      setLoading(false);
     })();
   }, []);
 
@@ -44,7 +45,7 @@ function ListPage(props) {
             <Paper elevation={0}>Left</Paper>
           </Grid>
           <Grid item className={classes.right}>
-            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <Typography>Right</Typography>}</Paper>
+            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <ProductList data={productList} />}</Paper>
           </Grid>
         </Grid>
       </Container>
