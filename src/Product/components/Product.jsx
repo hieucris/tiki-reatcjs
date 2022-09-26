@@ -20,7 +20,6 @@ function Product({ product }) {
         <Box component="span" fontSize="20px" fontWeight="bold" mr={1}>
           {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.salePrice)}
         </Box>
-
         {product.promotionPercent > 0 ? ` -${product.promotionPercent}%` : ''}
       </Typography>
     </Box>
