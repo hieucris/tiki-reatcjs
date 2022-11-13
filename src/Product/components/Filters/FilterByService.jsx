@@ -1,7 +1,6 @@
-import React from 'react';
+import { Box, Checkbox, FormControlLabel, makeStyles, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Box, Button, Checkbox, FormControlLabel, makeStyles, TextField, Typography } from '@material-ui/core';
-import { useState } from 'react';
+import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,8 +28,10 @@ function FilterByService({ filters = {}, onChange }) {
   const classes = useStyles();
 
   const handleChange = (e) => {
+    if (!onChange) return;
+
     const { name, checked } = e.target;
-    if (onChange) onChange({ [name]: checked });
+    onChange({ [name]: checked });
   };
 
   return (
@@ -40,13 +41,13 @@ function FilterByService({ filters = {}, onChange }) {
       <ul className={classes.list}>
         {[
           { value: 'isPromotion', label: 'Có khuyến mãi' },
-          { value: 'isFreeShip', label: 'Miễn phí vận chuyển' },
+          { value: 'isFreeShip', label: 'Vận chuyển miễn phí' },
         ].map((service) => (
           <li key={service.value}>
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={filters[service.value]}
+                  checked={Boolean(filters[service.value])}
                   onChange={handleChange}
                   name={service.value}
                   color="primary"
