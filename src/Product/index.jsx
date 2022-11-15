@@ -8,7 +8,7 @@ import DetailPage from './pages/DetailPage';
 ProductFeature.propTypes = {};
 
 function ProductFeature(props) {
-  const match = useRouteMatch;
+  const match = useRouteMatch();
   return (
     <Box pt={4}>
       <Switch>
