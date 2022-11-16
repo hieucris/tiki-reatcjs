@@ -21,7 +21,7 @@ const productApi = {
     };
   },
   get(id) {
-    const url = `/product/${id}`;
+    const url = `/products/${id}`;
     return axiosClient.post(url);
   },
   add(data) {
