@@ -1,4 +1,5 @@
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import ProductInfo from 'Product/components/ProductInfo';
 import ProductThumbnail from 'Product/components/ProductThumbnail';
 import useProductDetail from 'Product/hooks/useProductDetail';
 import React from 'react';
@@ -39,7 +40,7 @@ function DetailPage() {
               <ProductThumbnail product={product} />
             </Grid>
             <Grid item className={classes.right}>
-              Product Info
+              <ProductInfo product={product} />
             </Grid>
           </Grid>
         </Paper>
